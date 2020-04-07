@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: '@project.artifactId@'
+
+camel:
+  health:
+    check:
+      routes:
+        enabled: true
+
+info:
+  build:
+    artifact: '@project.artifactId@'
+    description: '@project.description@'
+    name: '@project.name@'
+    version: '@project.version@'
+
+---
+spring:
+  profiles: DEV
+  cloud:
+    config:
+      uri: https://configuration-dev.jbhunt.com/ws_infrastructure_configuration
+---
+spring:
+  profiles: TEST
+  cloud:
+    config:
+      uri: https://configuration-tst.jbhunt.com/ws_infrastructure_configuration
+---
+spring:
+  profiles: QA
+  cloud:
+    config:
+      uri: https://configuration.jbhunt.com/ws_infrastructure_configuration
+---
+spring:
+  profiles: PROD
+  cloud:
+    config:
+      uri: https://configuration.jbhunt.com/ws_infrastructure_configuration
+...
